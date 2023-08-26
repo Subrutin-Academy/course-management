@@ -1,0 +1,62 @@
+@startuml
+
+entity "Course" as c {
+    *id: number <<generated>>
+    *course_name: varchar
+
+}
+
+entity "CoursePeriod" as cp {
+    *id: number <<generated>>
+    *name: varchar
+    *description: varchar
+    *start: date
+    *finish: date
+}
+
+c ||--o{ cp
+
+entity "Instructor" as i {
+     *id: number <<generated>>
+     *first_name: varchar
+     *last_name: varchar
+
+}
+
+entity "Section" as s {
+    *id: number <<generated>>
+    name: varchar
+}
+
+entity "Lesson" as l {
+    *id: number <<generated>>
+    *name: varchar
+    *content_id:number
+
+}
+
+entity "Content" as co {
+    *id: number <<generated>>
+    *type: enum
+    *storage_id: enum
+}
+
+
+entity "Student" as st {
+    *id: number <<generated>>
+    *course_period_id: number
+    *user_id: number
+
+}
+
+
+entity "StudentActivity" as sta {
+    *id: number <<generated>>
+    *lesson_id: number
+    *seconds: number
+    *is_complete: number
+
+}
+
+
+@enduml
